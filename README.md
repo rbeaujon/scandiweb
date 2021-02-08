@@ -1,5 +1,5 @@
 # Scandiweb task documentation
-A formulary to show and register products with mass delete and validations 
+A formulary to show a list of register products in DB with mass delete and validations 
 
 # Setup
 
