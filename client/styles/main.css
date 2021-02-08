@@ -1,0 +1,172 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #ffffff;	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1em;
+}
+
+.title {
+  margin-left: 20mm;
+  margin-top: 10mm;
+  padding-bottom: 0mm;
+  font-size: 8mm;
+  display: inline-block;
+
+}
+
+.line { 
+  border-top: 2px solid rgb(87, 83, 83);
+  margin-left: 5em;
+  margin-right: 5em;
+}
+
+.footer {
+  border-top: 2px solid rgb(87, 83, 83);
+  margin-left: 5em;
+  margin-right: 5em;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+.button {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 2px 2px 5px rgb(17, 17, 17);
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 1em;
+  display: inline-block;
+}
+
+.add {
+  margin-left: 45em;
+}
+.delete {
+  margin-left: 1em;
+}
+
+.container{
+	margin-left: 8em;
+  width: 1024px;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 5px;
+}
+
+.containerAdd{
+  margin-top: 3em;
+  margin-left: 8em;
+  width: 1024px;
+  display: grid;
+  grid-template-columns: 10em 10em 25em;
+  grid-template-rows: 2em 2em;
+  grid-gap: 2em;
+}
+
+.containerSwitch{
+  margin-top: 2em;
+  margin-left: 13em;
+  display: grid;
+  width: 700px;
+  height: 250px;
+  grid-template-columns: 12em 8em 20em;
+  grid-template-rows: 10em;
+  grid-gap: 1em;
+  border-style: groove;
+  
+}
+
+.product {
+  color: #443f3f;
+	margin: 20px 20px;
+  width: 250px;
+  border-style: groove;
+
+}
+
+.specifications {
+    background-color: rgb(255, 255, 255);
+    border-color: black;
+    border: 1px;
+    
+	}
+
+.specifications  p {
+		font-size: 15px;
+    margin: 1em;
+    margin-top: 0em;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  
+.hidden {
+    display: none;
+}
+
+.show {
+    display: inline-block;
+}
+
+.itemsAdd {
+  margin-left: 5em;
+}
+
+.itemsAdd span {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+.inputAdd {
+  text-align: left;
+  align-items: initial;
+  border: 2px solid rgb(58, 56, 56);
+  width: 10em;
+ 
+}
+.switchAdd {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+.spanSwitch {
+  font-family: sans-serif;
+  font-size: 16px;
+  margin-top: 2em;
+}
+
+.error {
+  background-color: #ffffff;
+  color: red;
+  margin-left: 10em;
+  margin-top: 5em;
+  font-size: 15px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.errorMSG {
+  background-color: #ffffff;
+  color: red;
+}
+
+.generalError {
+  background-color: #ffffff;
+  color: red;
+  margin-left: 10em;
+  margin-top: 5em;
+  font-size: 15px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+.checkmark {
+  position: static;
+  margin-top: 1em;
+  margin-left: 1em;
+  height: 15px;
+  width: 15px;
+  background-color: rgb(206, 34, 34);
+}
