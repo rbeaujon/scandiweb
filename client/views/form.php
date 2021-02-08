@@ -15,10 +15,10 @@
     while($row = $result->fetch_array(MYSQLI_ASSOC)){
         $clase = $row['type'];
         if($clase === "dvd"){
-            $tipo = "Size: " . $row['dvdSize'];
+            $tipo = "Size: " . $row['dvdSize']. " MB";
         }
         if($clase === "book"){
-            $tipo = "Weight: " . $row['bookKg'];
+            $tipo = "Weight: " . $row['bookKg'] . " KG";
         }
         if($clase === "furniture"){
             $tipo = "Dimension: " . $row['height'] . "X" .  $row['width'] . "X" . $row['length'];

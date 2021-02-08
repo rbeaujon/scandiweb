@@ -95,12 +95,12 @@ function validations (val, x) {
       
     if (x === 'Price'){
         
-        pattern = /[A-z !@#$%^&*()_+/'\\;\]|"}{?><±§}]/g;  // regular Exp to check the input text only numbers
+        pattern = /[A-z !@#$%^&*()_+/'\\;\]|"}{?><±§},]/g;  // regular Exp to check the input text only numbers
         result = pattern.test(val);
       
         if (result === true){
       
-            $('#errorPrice').html(x + ' must have only numbers!');
+            $('#errorPrice').html(x + ' must have only integer numbers or decimals XXX.XX!');
             control = 1;
         }
 
@@ -133,14 +133,14 @@ function validations (val, x) {
 
     if (x === 'dvd'){
         
-        pattern = /[A-z !@#$%^&*()_+/'\\;\]|"}{?><±§}]/g;  // regular Exp to check the input text only numbers
+        pattern = /[A-z !@#$%^&*()_+/'\\;\]|"}{?><±§,}]/g;  // regular Exp to check the input text only numbers
         result = pattern.test(val);
         id_error = 'errorDVD';
         errorfield = '#errorDVD';
       
         if (result === true){
       
-            $(errorfield).html(x + ' must have only numbers!');
+            $(errorfield).html(x + ' must have only integer numbers or decimals XXX.XX!');
             document.getElementById(id_error).className = "errorMSG";
             control = 1;
         }
@@ -160,14 +160,14 @@ function validations (val, x) {
   
     if (x === 'book'){
         
-        pattern = /[A-z !@#$%^&*()_+/'\\;\]|"}{?><±§}]/g;  // regular Exp to check the input text only numbers
+        pattern = /[A-z !@#$%^&*()_+/'\\;\]|"}{?><±§,}]/g;  // regular Exp to check the input text only numbers
         result = pattern.test(val);
-        id_error = 'errorDVD';
-        errorfield = '#errorDVD';
+        id_error = 'errorBook';
+        errorfield = '#errorBook';
       
         if (result === true){
       
-            $(errorfield).html(x + ' must have only numbers!');
+            $(errorfield).html(x + ' must have only integer numbers or decimals XXX.XX!');
             document.getElementById(id_error).className = "errorMSG";
             control = 1;
         }
@@ -186,14 +186,14 @@ function validations (val, x) {
 
     if (x === 'height' || x === 'width' || x === 'lenght'){
 
-        pattern = /[A-z !@#$%^&*()_+/'\\;\]|"}{?><±§}]/g;  // regular Exp to check the input text only numbers
+        pattern = /[A-z !@#$%^&*()_+/'\\;\]|"}{?><±§},]/g;  // regular Exp to check the input text only numbers
         result = pattern.test(val);
         id_error = 'errorFurniture';
         errorfield = '#errorFurniture';
       
         if (result === true){
       
-            $(errorfield).html(x + ' must have only numbers!');
+            $(errorfield).html(x + ' must have only integer numbers or decimals XXX.XX!');
             document.getElementById(id_error).className = "errorMSG";
             control = 1;
         }
@@ -236,7 +236,7 @@ function save() {
 
     if(control == 0){
 
-      $.post('server/submit.php',$formData,
+      $.post('server/services/submit.php',$formData,
       (data) => {
         $('#results').html(data);
         location.reload();
@@ -276,8 +276,7 @@ function massdelete(){
 
 function add() {
   
-  control = 1;  
-  console.log("CONTROL en add es:" + control);
+  control = 1; 
 
   var y = document.getElementById("title"); //change title
   y.innerHTML = "Add Product";
