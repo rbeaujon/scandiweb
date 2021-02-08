@@ -11,4 +11,4 @@ A formulary to show a list of register products in DB with mass delete and valid
 
 5) Go to the index in http://localhost/scandiweb/ 
 
-# Troubleshooting
+# Troubleshooting.
