@@ -33,7 +33,7 @@ function save() {
           location.reload();
         });
       } else {
-        $('#errorGeneral').html('THERE IS EMPTY FIELDS OR SOME DATA IS INVALID, CHECK AND TRY AGAIN!!');
+        $('#errorGeneral').html('THERE ARE EMPTY FIELDS OR SOME DATA IS INVALID, CHECK AND TRY AGAIN!!');
       }
   
   } 
