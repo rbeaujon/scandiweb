@@ -2,7 +2,31 @@
 function validations (val, x) {
 
   control = 0;
-  
+
+    if (x === ''){
+        
+        pattern = /[,.!@#$%^&*()_+/'\\;\]|"}{?><±§}]/g;  // Expresion regular to check the input text correctly
+        result = pattern.test(val);
+    
+        if (result === true){
+    
+            $('#errorSKU').html(x + ' must have only letters and numbers!');
+            control = 1;
+        }
+
+        if (!val && val.length === 0) {
+
+            $('#errorSKU').html('is required and can\'t be empty!!');
+            control = 1;
+        
+        }
+
+        if (control == 0) {
+        $('#errorSKU').html('');
+        }
+
+    }  
+
     if (x === 'SKU'){
      
         pattern = /[,.!@#$%^&*()_+/'\\;\]|"}{?><±§}]/g;  // Expresion regular to check the input text correctly

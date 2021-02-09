@@ -6,6 +6,10 @@ function save() {
     var myswitch = document.getElementById("switch").value;
     var $formData = ""; 
     
+      if(myswitch === ""){
+        control = 1;
+      }  
+
       if(myswitch === "dvd"){
         var dvdMB = document.getElementById('dvdMB').value;
         $formData =  {sku, name, price, myswitch, dvdMB};
