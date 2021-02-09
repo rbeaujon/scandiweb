@@ -8,8 +8,8 @@ include 'server/session.php';
 <html>
     <title>Scandiweb Test </title>
 <head>
-    <script src="client/scripts/services.js"></script>
-   <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <script src="client/scripts/master.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
     <link href="client/styles/main.css" rel="stylesheet" type="text/css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
