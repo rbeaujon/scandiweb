@@ -1,5 +1,5 @@
 <?PHP
- include ("conectDB.php");
+ include ("db.php");
 
  $itemsToDelete = $_POST['itemsToDelete'];
 

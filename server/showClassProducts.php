@@ -1,5 +1,5 @@
 <?php 
-    include ("services/conectDB.php"); 
+    include ("services/db.php"); 
 
   
     $tipo = "";

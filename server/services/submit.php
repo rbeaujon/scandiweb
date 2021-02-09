@@ -1,7 +1,7 @@
 
 
 <?PHP
- include ("conectDB.php");
+ include ("db.php");
 
   $sku = $_POST['sku'];
   $name = $_POST['name'];
