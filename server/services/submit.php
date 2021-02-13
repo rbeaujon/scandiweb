@@ -3,6 +3,8 @@
 <?PHP
  include ("db.php");
 
+// registering in db according to the sort of item
+
   $sku = $_POST['sku'];
   $name = $_POST['name'];
   $price = $_POST['price'];

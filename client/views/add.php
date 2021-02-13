@@ -6,7 +6,7 @@
    <span class="span">SKU</span>
 </div>
 <div> 
-   <input name="sku" id="sku" type="text" class="inputAdd" oninput="validations(this.value, 'SKU')"/>
+   <input name="sku" id="sku" type="text" class="inputAdd" onblur="isValidSku(this.value)"/>
 </div>
 <div id= "errorSKU" class="errorMSG"> </div>
 
@@ -15,7 +15,7 @@
    <span class="span">Name</span>
 </div>
 <div>   
-   <input name="name" id="name" type="text" class="inputAdd" oninput="validations(this.value, 'Name')" />
+   <input name="name" id="name" type="text" class="inputAdd" oninput="isValidName(this.value)"/>
 </div>
 <div id= "errorName" class="errorMSG"> </div>
 
@@ -24,7 +24,7 @@
    <span class="span">Price ($)</span>
 </div>
 <div>
-   <input name="price" id="price" type="text" class="inputAdd" oninput="validations(this.value, 'Price')"/>
+   <input name="price" id="price" type="text" class="inputAdd" oninput="isValidPrice(this.value)"/>
 </div>
 <div id= "errorPrice" class="errorMSG"> </div>
 
@@ -33,7 +33,7 @@
     <span class="span">Select</span>
 </div>
 <div>    
-<select id = "switch" onchange = "switchAdd()" class="switchAdd"  onchange="validations(this.value, 'Switch')">
+<select id = "switch"  class="switchAdd"  onchange="switchAdd()" onblur="isValidSwitch(this.value)" >
         <option value="">Select</option>
         <option value="dvd">DVD</option>
         <option value="book">Book</option>
@@ -51,7 +51,7 @@
     <span class="itemsAdd span"><br><br>"Product Description"</span>
 </div>
 <div id="dvdSize" class="hidden">   
-    <input type="text" id="dvdMB" name="dvdMB" class="inputAdd" oninput="validations(this.value, 'dvd')" > </input>
+    <input type="text" id="dvdMB" name="dvdMB" class="inputAdd" oninput="isValidDVD(this.value)"> </input>
 </div>
 <div id= "errorDVD" class="hidden"> 
 </div>
@@ -61,7 +61,7 @@
     <span class="itemsAdd span"><br><br>"Product Description"</span>
 </div>
 <div id="bookKg" class="hidden">   
-    <input type="text" id="bookW" name="bookW"  class="inputAdd"  onblur="validations(this.value, 'book')"> </input>
+    <input type="text" id="bookW" name="bookW"  class="inputAdd"  oninput="isValidBook(this.value)"> </input>
 </div>
 <div id= "errorBook" class="hidden"> 
 </div>
@@ -73,9 +73,9 @@
   <span class="itemsAdd span"><br><br>"Product Description"</span>
 </div>
 <div id="furnitureSize" class="hidden">
-    <input type="text" id="height" name="furnitureH" class="inputAdd"  onblur="validations(this.value, 'height')"></input><br>
-    <input type="text" id="width" name="furnitureW" class="inputAdd"   onblur="validations(this.value, 'width')"></input><br>
-    <input type="text" id="lenght" name="furnitureL" class="inputAdd"  onblur="validations(this.value, 'lenght')"></input><br>
+    <input type="text" id="height" name="furnitureH" class="inputAdd"  oninput="isValidFurniture(this.value)"></input><br>
+    <input type="text" id="width" name="furnitureW" class="inputAdd"   oninput="isValidFurniture(this.value)"></input><br>
+    <input type="text" id="lenght" name="furnitureL" class="inputAdd"  oninput="isValidFurniture(this.value)"></input><br>
 </div>
 <div id= "errorFurniture" class="hidden">
 </div>

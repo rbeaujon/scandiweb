@@ -1,192 +1,203 @@
+function isValidSku(val) {
 
-function validations (val, x) {
+    !val || val.length === 0  || val === '' ? ( 
 
-  control = 0;
+        $('#errorSKU').html('SKU is required and can\'t be empty!!')
 
-    if (x === ''){
-        
-        pattern = /[,.!@#$%^&*()_+/'\\;\]|"}{?><±§}]/g;  // Expresion regular to check the input text correctly
-        result = pattern.test(val);
-    
-        if (result === true){
-    
-            $('#errorSKU').html(x + ' must have only letters and numbers!');
-            control = 1;
-        }
+    ) : ( 
 
-        if (!val && val.length === 0) {
+    pattern = /[,.!@#$%^&*()_+/'\ \\;\]|"}{?><±§}]/g,  // Expresion regular to check the input text correctly
+    result = pattern.test(val),
 
-            $('#errorSKU').html('is required and can\'t be empty!!');
-            control = 1;
-        
-        }
-
-        if (control == 0) {
-        $('#errorSKU').html('');
-        }
-
-    }  
-
-    if (x === 'SKU'){
-     
-        pattern = /[,.!@#$%^&*()_+/'\\;\]|"}{?><±§}]/g;  // Expresion regular to check the input text correctly
-        result = pattern.test(val);
-      
-        if (result === true){
-      
-            $('#errorSKU').html(x + ' must have only letters and numbers!');
-            control = 1;
-        }
-
-        if (!val && val.length === 0) {
-
-            $('#errorSKU').html('is required and can\'t be empty!!');
-            control = 1;
-          
-        }
-
-        if (control == 0) {
-        $('#errorSKU').html('');
-        }
-
-    }
-
-    if (x === 'Name'){
-        
-        pattern = /[0-9,.!@#$%^&*()_+/'\\;\]|"}{?><±§}]/g;  // regular Exp to check the input text only letters
-        result = pattern.test(val);
-      
-        if (result === true){
-      
-            $('#errorName').html(x + ' must have only letters!');
-            control = 1;
-        }
-
-        if (!val && val.length === 0) {
-
-            $('#errorName').html('is required and can\'t be empty!!');
-            control = 1;
-          
-        }
-        if (control == 0) {
-        $('#errorName').html('');
-        }
-    }
-      
-    if (x === 'Price'){
-        
-        pattern = /[A-z !@#$%^&*()_+/'\\;\]|"}{?><±§},]/g;  // regular Exp to check the input text only numbers
-        result = pattern.test(val);
-      
-        if (result === true){
-      
-            $('#errorPrice').html(x + ' must have only integer numbers or decimals XXX.XX!');
-            control = 1;
-        }
-
-        if (!val && val.length === 0) {
-
-            $('#errorPrice').html('is required and can\'t be empty!!');
-            control = 1;
-          
-        }
-        if (control == 0) {
-        $('#errorPrice').html('');
-        }
-    }
-
-    if (x === 'Switch'){
-        
-        if (!val && val.length === 0) {
-
-              $('#errorSwitch').html(val + 'is required!!');
-              control = 1; 
-        }
-        else {
-        $('#errorSwitch').html('');
-        document.getElementById("errorDVD").className = "hidden";
-        document.getElementById("errorBook").className = "hidden";
-        document.getElementById("errorFurniture").className = "hidden";
-        control =  0;
-        }
-    }
-
-    if (x === 'dvd'){
-        
-        pattern = /[A-z !@#$%^&*()_+/'\\;\]|"}{?><±§,}]/g;  // regular Exp to check the input text only numbers
-        result = pattern.test(val);
-        id_error = 'errorDVD';
-        errorfield = '#errorDVD';
-      
-        if (result === true){
-      
-            $(errorfield).html(x + ' must have only integer numbers or decimals XXX.XX!');
-            document.getElementById(id_error).className = "errorMSG";
-            control = 1;
-        }
-
-        if (!val && val.length === 0) {
-
-            $(errorfield).html('is required and can\'t be empty!!');
-            document.getElementById(id_error).className = "errorMSG";
-            control = 1;
-          
-        }
-        if (control == 0) {
-        $(errorfield).html('');
-        }
-
-    }
+    result === true ? (
   
-    if (x === 'book'){
+            $('#errorSKU').html('SKU must have only letters and numbers!')
+       
+    ) : (
         
-        pattern = /[A-z !@#$%^&*()_+/'\\;\]|"}{?><±§,}]/g;  // regular Exp to check the input text only numbers
-        result = pattern.test(val);
-        id_error = 'errorBook';
-        errorfield = '#errorBook';
+            $('#errorSKU').html('')
+        ) 
+
+    )
+
+
+}
+
+function isValidName(val) {
+
+    !val || val.length === 0  || val === '' ? ( 
+
+        $('#errorName').html('Name is required and can\'t be empty!!')
+
+    ) : ( 
+
+    pattern = /[0-9,.!@#$%^&*()_+/'\\;\]|"}{?><±§}]/g,  // regular Exp to check the input text only letters
+    result = pattern.test(val),
+    
+    result === true ? (
       
-        if (result === true){
+            $('#errorName').html('Name must have only letters!')
+            
+    ) : (
+
+            $('#errorName').html('')
+        ) 
+    )    
+}     
+   
+function isValidPrice(val){
+
+    !val || val.length === 0  || val === '' ? ( 
+
+        $('#errorPrice').html('Price is required and can\'t be empty!!')
+
+    ) : (  
+        
+    pattern = /[A-z !@#$%^&*()_+/'\\;\]|"}{?><±§},]/g,  // regular Exp to check the input text only numbers
+    result = pattern.test(val),
+    
+    result === true ? (
       
-            $(errorfield).html(x + ' must have only integer numbers or decimals XXX.XX!');
-            document.getElementById(id_error).className = "errorMSG";
-            control = 1;
-        }
+            $('#errorPrice').html('Price must have only integer numbers or decimals XXX.XX!')
 
-        if (!val && val.length === 0) {
+    ) : (
 
-            $(errorfield).html('is required and can\'t be empty!!');
-            document.getElementById(id_error).className = "errorMSG";
-            control = 1;
-          
-        }
-        if (control == 0) {
-        $(errorfield).html('');
-        }
-    }  
+            $('#errorPrice').html('')
+        )  
+    )    
+}  
+ 
+function isValidSwitch(val){
+        
+    val === "" || !val  ||  val.length === 0 ? (
 
-    if (x === 'height' || x === 'width' || x === 'lenght'){
+            $('#errorSwitch').html('You must select one!!')
 
-        pattern = /[A-z !@#$%^&*()_+/'\\;\]|"}{?><±§},]/g;  // regular Exp to check the input text only numbers
-        result = pattern.test(val);
-        id_error = 'errorFurniture';
-        errorfield = '#errorFurniture';
-      
-        if (result === true){
-      
-            $(errorfield).html(x + ' must have only integer numbers or decimals XXX.XX!');
-            document.getElementById(id_error).className = "errorMSG";
-            control = 1;
-        }
+             ) : ( 
+     
+            $('#errorSwitch').html(''),
+            document.getElementById("errorDVD").className = "hidden",
+            document.getElementById("errorBook").className = "hidden",
+            document.getElementById("errorFurniture").className = "hidden"
+         
+    )
+   
+    
+    val === "dvd" ? (
 
-        if (!val && val.length === 0) {
+            document.getElementById('dvd').className = "show",
+            document.getElementById('dvdSize').className = "show",
+            document.getElementById('book').className = "hidden",
+            document.getElementById('bookKg').className = "hidden",
+            document.getElementById('furniture').className = "hidden",
+            document.getElementById('furnitureSize').className = "hidden",
+            document.getElementById("dvdMB").focus(),
+            document.getElementById("errorDVD").className = "errorMSG"
+    
+            ) : (      
+    
+    val === "book" ? ( 
 
-            $(errorfield).html('is required and can\'t be empty!!');
-            document.getElementById(id_error).className = "errorMSG";
-            control = 1;
-          
-        }
-        if (control == 0) {
-        $(errorfield).html('');
-        }
-    }
-  }
+            document.getElementById('dvd').className = "hidden",
+            document.getElementById('dvdSize').className = "hidden",
+            document.getElementById('book').className = "show",
+            document.getElementById('bookKg').className = "show",
+            document.getElementById('furniture').className = "hidden",
+            document.getElementById('furnitureSize').className = "hidden",
+            document.getElementById("bookKg").focus(),
+            document.getElementById("errorBook").className = "errorMSG"
+        
+        
+             ) : (  
+            
+        
+    val === "furniture" ? (     
+        
+                        document.getElementById('dvd').className = "hidden",
+                        document.getElementById('dvdSize').className = "hidden",
+                        document.getElementById('book').className = "hidden",
+                        document.getElementById('bookKg').className = "hidden",
+                        document.getElementById('furniture').className = "show",
+                        document.getElementById('furnitureSize').className = "show",
+                        document.getElementById("furnitureSize").focus(),
+                        document.getElementById("errorFurniture").className = "errorMSG"
+
+                ) : (
+               
+                        console.log('TEST')
+                )
+        )  
+    )    
+
+      document.getElementById('containerSwitch').className = "containerSwitch";
+}
+
+function isValidDVD(val){
+
+    !val || val.length === 0  || val === '' ? ( 
+
+        $('#errorDVD').html('DVD is required and can\'t be empty!!')
+
+    ) : ( 
+
+    pattern = /[A-z !@#$%^&*()_+/'\\;\]|"}{?><±§,}]/g,  // regular Exp to check the input text only numbers
+    result = pattern.test(val),
+
+    result === true ? (
+  
+        $('#errorDVD').html('DVD must have only integer numbers or decimals XXX.XX!'),
+        document.getElementById('errorDVD').className = "errorMSG"
+    
+    ) : ( 
+
+        $('#errorDVD').html('')
+    )
+    )
+}
+
+function isValidBook(val){
+
+    !val || val.length === 0  || val === '' ? ( 
+
+        $('#errorBook').html('Book is required and can\'t be empty!!')
+
+    ) : ( 
+
+    pattern = /[A-z !@#$%^&*()_+/'\\;\]|"}{?><±§,}]/g,  // regular Exp to check the input text only numbers
+    result = pattern.test(val),
+
+  
+    result === true ? (
+  
+        $('#errorBook').html('Book must have only integer numbers or decimals XXX.XX!'),
+        document.getElementById('errorBook').className = "errorMSG"
+    
+    ) : ( 
+
+        $('#errorBook').html('')
+    )
+    )
+}
+
+function isValidFurniture(val){
+
+    !val || val.length === 0  || val === '' ? ( 
+
+        $('#errorFurniture').html('Furniture is required and can\'t be empty!!')
+
+    ) : ( 
+
+    pattern = /[A-z !@#$%^&*()_+/'\\;\]|"}{?><±§},]/g,  // regular Exp to check the input text only numbers
+    result = pattern.test(val),
+  
+    result === true ? (
+  
+        $('#errorFurniture').html('Furniture must have only integer numbers or decimals XXX.XX!'),
+        document.getElementById('errorFurniture').className = "errorMSG"
+    
+    ) : (
+
+        $('#errorFurniture').html('')
+    )
+    )
+}

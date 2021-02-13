@@ -1,6 +1,8 @@
+// Change the view when click on ADD button
+
 function add() {
   
-    control = 1; 
+    error = 1; 
   
     var y = document.getElementById("title"); //change title
     y.innerHTML = "Add Product";

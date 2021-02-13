@@ -16,4 +16,5 @@ include('client/scripts/cancel.js');
 include('client/scripts/massdelete.js');
 include('client/scripts/save.js');
 include('client/scripts/validations.js');
+include('client/scripts/validation.js');
 include('client/scripts/switchAdd.js');
