@@ -24,7 +24,7 @@ function save() {
 
     errorSKU === "" && errorName === "" && errorPrice === "" && errorSwitch === "" ? (
 
-        error = 0
+        error = 1
 
         ) : (
 
@@ -34,22 +34,24 @@ function save() {
     myswitch === "dvd"  ? (
 
         dvdMB = document.getElementById('dvdMB').value,
-        isValidDVD(dvdMB)
+        isValidDVD(dvdMB),
+        console.log('E0: ' + error)
 
         ) : (
 
-          error = 1
+          console.log()
 
         )
 
-    myswitch === "dvd"  &&  errorDVD === "" ? (    
+    myswitch === "dvd"  &&  errorDVD === "" && dvdMB != "" ? (    
 
         $formData =  {sku, name, price, myswitch, dvdMB},
-        error = 0
+        error = 0,
+        console.log('E3: ' + error)
 
         ) : ( 
       
-        error = 1
+        console.log()
             
     )
     
@@ -62,18 +64,18 @@ function save() {
 
       ) : (
 
-        error = 1
+        console.log()
 
       )
 
-    myswitch === "book"  &&  errorBook === "" ? (    
+    myswitch === "book"  &&  errorBook === "" && bookW != "" ? (    
 
-      $formData =  { sku, name, price, myswitch,bookW},
+      $formData =  {sku, name, price, myswitch,bookW},
       error = 0
 
       ) : ( 
     
-      error = 1
+        console.log()
           
   )
 
@@ -90,7 +92,7 @@ function save() {
 
     ) : (
 
-      error = 1
+      console.log()
 
     )
 
@@ -102,10 +104,10 @@ function save() {
 
     ) : ( 
   
-    error = 1
+      console.log()
         
 )
-     
+console.log('E5: ' + error)
     error === 0 ? (       
         
       $.post('server/services/submit.php',$formData,
