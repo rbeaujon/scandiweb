@@ -11,4 +11,6 @@ A formulary to show a list of register products in DB with mass delete and valid
 
 5) Go to the index in http://localhost/scandiweb/ 
 
+The App is working also under the link: https://aistica.com/scandiweb/
+
 # Troubleshooting.
