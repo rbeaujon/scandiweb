@@ -10,12 +10,12 @@
 <body>
   
   
-  <?php include 'client/views/menu.php'; ?>
+  <?php include 'client/views/menu.html'; ?>
 
   <div class="line"></div> <!--  line -->
  
   <div id="formAdd" class = "hidden">
-      <?php include 'client/views/add.php'; ?>
+      <?php include 'client/views/add.html'; ?>
   </div>
 
   <div id="form" class = "show">
