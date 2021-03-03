@@ -1,10 +1,18 @@
 <?php 
-    include ("services/db.php"); 
-
+    require("services/db.php");
+    
+    // my new instance of DB
+    $conn = new ConnectionDB();
+    
+    // Create a new connection with DB
+    $conn->CreateConnection();
+ 
   
     $tipo = "";
 
-    $result = mysqli_query($conn,"SELECT * FROM products");
+    $query = "SELECT * FROM products";
+    $result=$conn->ExecuteQuery($query);
+    //$result = mysqli_query($NewConn,"SELECT * FROM products");
 			  
     while($row = $result->fetch_array(MYSQLI_ASSOC)){
         $clase = $row['type'];
@@ -37,7 +45,8 @@
     </div>
     <?PHP  
         };
-        mysqli_close($conn);
+        // Closing the connection with BD
+        $conn->CloseConnection();
     ?>        
 <br/>
 
