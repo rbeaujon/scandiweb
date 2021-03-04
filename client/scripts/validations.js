@@ -124,7 +124,7 @@ function isValidSwitch(val){
 
                 ) : (
                
-                        console.log('TEST')
+                        console.log('')
                 )
         )  
     )    

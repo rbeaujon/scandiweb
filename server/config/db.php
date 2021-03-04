@@ -10,7 +10,7 @@ class ConnectionDB{
      
     public function __construct(){ 
         //Constructor
-        require_once "config_db.php";
+        require_once "configDB.php";
         $this->host=HOST;
         $this->user=USER;
         $this->password=PASSWORD;

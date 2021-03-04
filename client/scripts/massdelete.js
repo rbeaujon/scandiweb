@@ -10,7 +10,7 @@ function massdelete(){
        list = list.substring(0,list.length - 1);
     console.log (list);
 
-    $.post('server/services/massDelete.php',{itemsToDelete: list},
+    $.post('server/services/delete.php',{itemsToDelete: list},
     (data) => {
       $('#results').html(data);
       location.reload();
