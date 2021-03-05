@@ -3,11 +3,10 @@
     
     // my new instance of DB
     $conn = new ConnectionDB();
-    
+   
     // Create a new connection with DB
     $conn->CreateConnection();
  
-  
     $tipo = "";
 
     $query = "SELECT * FROM products";

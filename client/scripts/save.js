@@ -34,8 +34,7 @@ function save() {
     myswitch === "dvd"  ? (
 
         dvdMB = document.getElementById('dvdMB').value,
-        isValidDVD(dvdMB),
-        console.log('E0: ' + error)
+        isValidDVD(dvdMB)
 
         ) : (
 
@@ -46,8 +45,7 @@ function save() {
     myswitch === "dvd"  &&  errorDVD === "" && dvdMB != "" ? (    
 
         $formData =  {sku, name, price, myswitch, dvdMB},
-        error = 0,
-        console.log('E3: ' + error)
+        error = 0
 
         ) : ( 
       
@@ -119,7 +117,7 @@ console.log('E5: ' + error)
    
       ) : ( 
 
-      console.log('OTROS ERRORES')
+      console.log()
 
     ) 
   
