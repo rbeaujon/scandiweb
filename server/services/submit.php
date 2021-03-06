@@ -1,6 +1,6 @@
 <?PHP
 
-  require("../controller/myclass.php");
+  require("../controller/productsController.php");
 
   $sku = $_POST['sku'];
   $name = $_POST['name'];
@@ -9,5 +9,5 @@
 
   
   $product = new Product();
-  $product->CreateProduct($myswitch, $sku, $name, $price, $dvdMB, $bookW, $height, $width, $lenght );
+  $product->CreateProduct($myswitch, $sku, $name, $price);
 ?>

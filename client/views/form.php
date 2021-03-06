@@ -1,6 +1,6 @@
 <div id="container" class="container"> 
 
-    <?PHP include ("server/controller/products.php"); ?>
+    <?PHP include ("server/services/productsServices.php"); ?>
 
 </div>
 

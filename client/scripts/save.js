@@ -111,7 +111,7 @@ console.log('E5: ' + error)
       $.post('server/services/submit.php',$formData,
         (data) => {
           $('#results').html(data)
-          location.reload()
+         // location.reload()
         }
       ) 
    

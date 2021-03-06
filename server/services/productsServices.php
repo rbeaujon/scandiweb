@@ -1,5 +1,5 @@
 <?php 
-    require("server/config/db.php");
+    require("server/config/dbController.php");
     
     // my new instance of DB
     $conn = new ConnectionDB();

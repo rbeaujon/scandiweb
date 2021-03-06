@@ -1,6 +1,6 @@
 <?PHP 
 
-require("../config/db.php");
+require("../config/dbController.php");
 
 class Product{
     // Attributes
@@ -16,7 +16,7 @@ class Product{
     
     public function __construct() { } 
 
-    public function CreateProduct($myswitch, $sku, $name, $price, $dvdMB, $bookW, $height, $width, $lenght){
+    public function CreateProduct($myswitch, $sku, $name, $price){
         // Method to create one Product in DB
 
         // my new instance of DB
@@ -50,5 +50,22 @@ class Product{
 
     }
 
+    public function DeleteProduct($items){
+
+        // new inst from db
+        $conn = new ConnectionDB();
+        
+        // my new conexion to db
+        $conn->CreateConnection();
+    
+       //delete items in massive mode from products the list from script massdelete.js
+        
+        $sql_del= "DELETE FROM products WHERE id in ($items)";
+        
+        $conn->ExecuteQuery($sql_del);
+    
+        // Closing the connection with BD
+        $conn->CloseConnection();
+    }
 }
     ?>
