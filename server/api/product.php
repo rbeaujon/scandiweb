@@ -16,7 +16,7 @@ switch($method){
       post();
       break; 
               
-    case "DELETE": 
+    case "DELETE":
       delete();
       break; 
 
@@ -89,7 +89,7 @@ function post () {
 
 function delete () {
 
-  $itemsToDelete = $_POST['itemsToDelete'];
+  $itemsToDelete = file_get_contents('php://input');
 
   $productDelete = new Product();
   $productDelete->DeleteProduct($itemsToDelete);
