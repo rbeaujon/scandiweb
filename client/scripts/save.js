@@ -108,7 +108,7 @@ function save() {
 console.log('E5: ' + error)
     error === 0 ? (       
         
-      $.post('server/services/submit.php',$formData,
+      $.post('server/api/product.php',$formData,
         (data) => {
           $('#results').html(data)
          // location.reload()

@@ -1,6 +1,6 @@
 <?PHP 
 
-require("../config/dbController.php");
+require("db.php");
 
 class Product{
     // Attributes

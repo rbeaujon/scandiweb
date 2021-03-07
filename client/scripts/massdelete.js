@@ -10,10 +10,30 @@ function massdelete(){
        list = list.substring(0,list.length - 1);
     console.log (list);
 
-    $.post('server/services/delete.php',{itemsToDelete: list},
+
+    // Makes that JQUERY use delete method
+
+    $.delete = function(url, data, callback, type){
+
+      if ( $.isFunction(data) ){
+        type = type || callback,
+        callback = data,
+        data = {}
+      }
+    
+      return $.ajax({
+        url: url,
+        type: 'delete',
+        success: callback,
+        data: data,
+        contentType: type
+      });
+    }
+
+    $.delete('server/api/product.php',{itemsToDelete: list}, 
     (data) => {
       $('#results').html(data);
-      location.reload();
+      //location.reload();
     });
 
 
