@@ -2,7 +2,7 @@
  /*
  * Products controller to handle all comunication from user data
  */ 
-require_once("server/services/productService.php");
+require (__DIR__."/../services/productService.php");
 
 $method = $_SERVER['REQUEST_METHOD'];
 
@@ -17,7 +17,7 @@ switch($method){
       break; 
               
     case "DELETE": 
-     // delete();
+      delete();
       break; 
 
 }

@@ -1,5 +1,7 @@
 <?PHP 
 
+require (__DIR__."/../config/configDB.php");
+
 class ConnectionDB{
     // Attributes
     private $host;
@@ -10,7 +12,6 @@ class ConnectionDB{
      
     public function __construct(){ 
         //Constructor
-        require_once "../config/configDB.php";
         $this->host=HOST;
         $this->user=USER;
         $this->password=PASSWORD;
