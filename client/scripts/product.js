@@ -197,20 +197,21 @@ console.log('E5: ' + error)
       $.post('server/api/product.php',$formData,
         (data) => {
           $('#results').html(data)
-          location.reload()
+          
+          var container = document.getElementById("container");
+          container.remove();
          
-          // var y = document.getElementById("title"); //change title
-          // y.innerHTML = "Product List";
-          // document.getElementById("form").className = "show";
-          // document.getElementById("formAdd").className = "hidden";
-          // var b1 = document.getElementById("add");
-          // b1.innerHTML = "ADD";
-          // b1.setAttribute('onclick',  'add();');  
-          // var b2 = document.getElementById("massDelete"); 
-          // b2.innerHTML = "MASS DELETE";
-          // b2.setAttribute('onclick',  'massdelete();');
-    
+          document.getElementById("formAdd").className = "hidden";
+          document.getElementById("form").className = "show";
          
+          var b1 = document.getElementById("add");
+          b1.innerHTML = "ADD";
+          b1.setAttribute('onclick',  'add();');  
+          var b2 = document.getElementById("massDelete"); 
+          b2.innerHTML = "MASS DELETE";
+          b2.setAttribute('onclick',  'massdelete();');
+          showProduct()
+          
         }
       ) 
    
