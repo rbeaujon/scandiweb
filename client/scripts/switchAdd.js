@@ -1,4 +1,5 @@
-function switchAdd() { // conditional switch in add
+// Conditional switch when it's requiered in the IU adding a new product
+function switchAdd() { 
 
     var a = document.getElementById('switch');
    
@@ -40,5 +41,5 @@ function switchAdd() { // conditional switch in add
   
      document.getElementById('containerSwitch').className = "containerSwitch";
     
-  } // close switchAdd function
+} 
   

@@ -11,6 +11,7 @@ function include(file)
 
 }
 
+include('client/scripts/product.js');
 include('client/scripts/add.js');
 include('client/scripts/cancel.js');
 include('client/scripts/massdelete.js');

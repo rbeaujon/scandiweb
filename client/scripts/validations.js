@@ -1,3 +1,8 @@
+/* 
+* PRE VALIDATIONS ACCORDING WITH THE TEXT ADDED FOR THE CLIENT IN THE UI
+*/
+
+//Validation for the SKU value 
 function isValidSku(val) {
 
     !val || val.length === 0  || val === '' ? ( 
@@ -22,7 +27,7 @@ function isValidSku(val) {
 
 
 }
-
+//Validation for the NAME value 
 function isValidName(val) {
 
     !val || val.length === 0  || val === '' ? ( 
@@ -44,7 +49,7 @@ function isValidName(val) {
         ) 
     )    
 }     
-   
+//Validation for the PRICE value   
 function isValidPrice(val){
 
     !val || val.length === 0  || val === '' ? ( 
@@ -66,7 +71,7 @@ function isValidPrice(val){
         )  
     )    
 }  
- 
+//Validation of SWITCH  
 function isValidSwitch(val){
         
     val === "" || !val  ||  val.length === 0 ? (
@@ -131,7 +136,7 @@ function isValidSwitch(val){
 
       document.getElementById('containerSwitch').className = "containerSwitch";
 }
-
+//Validation for the DVD value
 function isValidDVD(val){
 
     !val || val.length === 0  || val === '' ? ( 
@@ -154,7 +159,7 @@ function isValidDVD(val){
     )
     )
 }
-
+//Validation for the BOOK value
 function isValidBook(val){
 
     !val || val.length === 0  || val === '' ? ( 
@@ -178,7 +183,7 @@ function isValidBook(val){
     )
     )
 }
-
+//Validation for the FURNITURE value
 function isValidFurniture(val){
 
     !val || val.length === 0  || val === '' ? ( 

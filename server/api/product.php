@@ -14,61 +14,20 @@ switch($method){
     
     case "POST": 
       post();
-      break; 
+    break; 
               
     case "DELETE":
       delete();
-      break; 
+    break; 
 
 }
 
-function get () {
-    
-  // my new instance of DB
-  $conn = new ConnectionDB();
- 
-  // Create a new connection with DB
-  $conn->CreateConnection();
+function get() {
 
-  $type = "";
-
-  $query = "SELECT * FROM products";
-  $result=$conn->ExecuteQuery($query);
-      
-  while($row = $result->fetch_array(MYSQLI_ASSOC)){
-      $clase = $row['type'];
-      if($clase === "dvd"){
-          $type = "Size: " . $row['dvdSize']. " MB";
-      }
-      if($clase === "book"){
-          $type = "Weight: " . $row['bookKg'] . " KG";
-      }
-      if($clase === "furniture"){
-          $type = "Dimension: " . $row['height'] . "X" .  $row['width'] . "X" . $row['length'];
-      }
-
- ?> 
- 
- <div class="product">
-
-  <input type="checkbox" id=<?PHP echo "$row[id]" ?> class="checkmark" >
-      <div class="specifications">
-          <ul>
-              <p><strong><?PHP echo "$row[sku]" ?></strong></p>
-              <p><strong><?PHP echo "$row[name]"?></strong></p>
-              <p><strong><?PHP echo "$row[price]"?></strong></p>
-              <p><strong> <?PHP echo "$type" ?></strong></p>
-              
-            
-              
-          </ul>
-      </div>
-  </div>
-  <?PHP  
-      };
-      // Closing the connection with BD
-      $conn->CloseConnection();
-
+  $product = new Product();
+  $product->ShowProduct();
+  $list = json_decode($product->jsonList);
+  echo $product->jsonList;
 }
 
 
@@ -92,6 +51,8 @@ function delete () {
 
   $productDelete = new Product();
   $productDelete->DeleteProduct($itemsToDelete);
+  
+  
 
 }
 
