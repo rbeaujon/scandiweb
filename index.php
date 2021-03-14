@@ -19,7 +19,7 @@
   </div>
 
   <div id="form" class = "show">
-      <?php include 'client/views/form.php'; ?>
+      <?php include 'client/views/form.html'; ?>
   </div>
   
   <div id="results" class="error itemsAdd"> </div>

@@ -11,9 +11,7 @@ function include(file)
 
 }
 
-include('client/scripts/add.js');
+include('client/scripts/product.js');
 include('client/scripts/cancel.js');
-include('client/scripts/massdelete.js');
-include('client/scripts/save.js');
 include('client/scripts/validations.js');
 include('client/scripts/switchAdd.js');

@@ -1,12 +1,15 @@
 <?PHP 
 
-require("../config/dbController.php");
+require("db.php");
 
 class Product{
     // Attributes
-    private $sku;
-    private $name;
-    private $price;
+    public $id;
+    public $sku;
+    public $name;
+    public $price;
+    public $spec;
+    public $jsonList;
     private $type;
     private $dvdData;
     private $bookW;
@@ -66,6 +69,50 @@ class Product{
     
         // Closing the connection with BD
         $conn->CloseConnection();
+    }
+
+    public function ShowProduct(){
+
+        // my new instance of DB
+        $conn = new ConnectionDB();
+        
+        // Create a new connection with DB
+        $conn->CreateConnection();
+
+        $spec = "";
+
+        $query = "SELECT * FROM products";
+        $result=$conn->ExecuteQuery($query);
+        $jsonList = array();
+      
+        while($row = $result->fetch_array(MYSQLI_ASSOC)){
+            $clase = $row['type'];
+            if($clase === "dvd"){
+                $spec = "Size: " . $row['dvdSize']. " MB";
+            }
+            if($clase === "book"){
+                $spec = "Weight: " . $row['bookKg'] . " KG";
+            }
+            if($clase === "furniture"){
+                $spec = "Dimension: " . $row['height'] . "X" .  $row['width'] . "X" . $row['length'];
+            }
+
+
+            $jsonList [] = [
+                            'id' => $row['id'],
+                            'sku' => $row['sku'],
+                            'name'=> $row['name'],
+                            'price'=> $row['price'],
+                            'spec'=> $spec
+                          
+            ];
+        };
+            $this->jsonList = json_encode($jsonList);
+           
+            return $this->jsonList;
+
+             // Closing the connection with BD
+             $conn->CloseConnection();
     }
 }
     ?>
