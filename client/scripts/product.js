@@ -85,6 +85,102 @@ function add() {
   
     document.getElementById("sku").focus();
 }  
+//Pre-evaluation data that it will send to DB under function "save"
+function prepareData(){
+
+  var sku = document.getElementById("sku").value;
+  var name = document.getElementById("name").value;
+  var price = document.getElementById("price").value;
+  var myswitch = document.getElementById("switch").value;
+
+  var $formData = ""; 
+
+  var errorSKU = $('#errorSKU').text();
+  var errorName = $('#errorName').text();
+  var errorPrice = $('#errorPrice').text();
+  var errorSwitch = $('#errorSwitch').text();
+  var errorDVD = $('#errorDVD').text();
+  var errorBook = $('#errorBook').text();
+  var errorFurniture = $('#errorFurniture').text()
+
+  isValidSku(sku);
+  isValidName(name);
+  isValidPrice(price);
+  isValidSwitch(myswitch);
+  
+
+
+ if(errorSKU === "" || errorName === "" || errorPrice === "" || errorSwitch === "" ){
+
+      error = 1;
+  }
+ 
+  if (myswitch === "dvd"){
+      
+      dvdMB = document.getElementById('dvdMB').value;
+      isValidDVD(dvdMB);
+      
+  }
+
+  if (myswitch === "dvd"  &&  errorDVD === "" && dvdMB != "" )  { 
+
+      $formData =  {sku, name, price, myswitch, dvdMB};
+      document.getElementById("dvdMB").value = "";
+      error = 0;
+  }
+
+  if (myswitch === "book"){
+
+      bookW = document.getElementById('bookW').value;
+      isValidBook(bookW);
+     
+  }  
+
+  if (myswitch === "book"  &&  errorBook === "" && bookW != ""){
+
+      $formData =  {sku, name, price, myswitch,bookW};
+      document.getElementById("bookW").value = "";
+      error = 0;
+  } 
+
+  if (myswitch === "furniture"){
+
+      height = document.getElementById('height').value;
+      width = document.getElementById('width').value;
+      lenght = document.getElementById('lenght').value;
+      isValidFurniture(height);
+      isValidFurniture(width);
+      isValidFurniture(lenght);
+
+  }  
+
+  if (myswitch === "furniture"  &&  errorFurniture === "" && height != "" && width != "" && lenght != ""){
+
+      $formData =  { sku, name, price, myswitch, height, width, lenght};
+       
+      document.getElementById("height").value = "";
+      document.getElementById("width").value = "";
+      document.getElementById("lenght").value = "";
+      
+      error = 0;
+
+  }          
+      
+  if(error == 0){
+
+      save($formData);
+
+      document.getElementById("sku").value = "";
+      document.getElementById("name").value = "";
+      document.getElementById("price").value = "";
+      document.getElementById("switch").value="";
+     
+     
+
+  }
+
+
+}
 //Save the new product in DB after to pass for client validations    
 function save(x) {  
   
