@@ -16,8 +16,8 @@ abstract class product{
     
     public function __construct() { } 
 
-    abstract public function create($sku, $name, $price);
-    public function delete($items){
+    abstract function create($sku, $name, $price);
+    public  static function delete($items){
         
             // new inst from db
             $conn = new ConnectionDB();
@@ -35,7 +35,7 @@ abstract class product{
             $conn->CloseConnection();
         
     }
-    public function show(){
+    public static function getAll(){
    
 
         // my new instance of DB
@@ -72,9 +72,9 @@ abstract class product{
                               
                 ];
             };
-                $this->jsonList = json_encode($jsonList);
+                $jsonList = json_encode($jsonList);
                
-                return $this->jsonList;
+                return $jsonList;
     
                  // Closing the connection with BD
                  $conn->CloseConnection();
@@ -161,4 +161,5 @@ class furniture extends product {
     }
   
 }
+
 ?>
