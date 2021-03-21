@@ -3,57 +3,52 @@
  * Products controller to handle all comunication from user data
  */ 
 require (__DIR__."/../services/productService.php");
+require (__DIR__."/baseApi.php");
 
-$method = $_SERVER['REQUEST_METHOD'];
 
-switch($method){
+class productApi extends api{
 
-    case "GET": 
-       get();
-    break; 
-    
-    case "POST": 
-      post();
-    break; 
-              
-    case "DELETE":
-      delete();
-    break; 
+  public $jsonList;
 
+  public function get(){
+
+     $getResult = product::getAll(); // Call a public  static method getAll to obtein all product in DB
+     echo $getResult;
+  }
+  public function post(){
+
+      $sku = $_POST['sku'];
+      $name = $_POST['name'];
+      $price = $_POST['price'];
+      $myswitch = $_POST['myswitch'];
+
+      if ($myswitch==="dvd"){
+          
+          $product = new dvd();
+          $product->create($sku, $name, $price);
+      }
+
+      if ($myswitch==="book"){
+          
+          $product = new book();
+          $product->create($sku, $name, $price);
+      }
+
+      if ($myswitch==="furniture"){
+          
+          $product = new furniture();
+          $product->create($sku, $name, $price);
+      }
+
+  }
+  public function delete(){
+
+      $itemsToDelete = file_get_contents('php://input');
+      product::delete($itemsToDelete);
+  }
 }
 
-function get() {
-
-  $product = new Product();
-  $product->ShowProduct();
-  $list = json_decode($product->jsonList);
-  echo $product->jsonList;
-}
-
-
-function post () {
-
-  $sku = $_POST['sku'];
-  $name = $_POST['name'];
-  $price = $_POST['price'];
-  $myswitch = $_POST['myswitch'];
-
-  
-  $product = new Product();
-  $product->CreateProduct($myswitch, $sku, $name, $price);
-
-}
-
-
-function delete () {
-
-  $itemsToDelete = file_get_contents('php://input');
-
-  $productDelete = new Product();
-  $productDelete->DeleteProduct($itemsToDelete);
-  
-  
-
-}
+$productApi = new productApi();
+$productApi->handleRequest();
 
 ?>
