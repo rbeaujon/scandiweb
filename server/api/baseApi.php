@@ -35,10 +35,8 @@ abstract class api {
         );
         // ok, validation error, or failure
         header('status: '.$status[$code]);
-        // return the encoded json
-        return json_encode(array(
-            'status' => $code < 300, // success or not?
-        ));
+
+        return $status[$code];
     }
     abstract function  get();
     abstract function  post();

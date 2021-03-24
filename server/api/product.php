@@ -19,12 +19,12 @@ class productApi extends api{
         if($getResult == NULL || $getResult === ""){
 
             $code = 500;
-            return api::responseCode($code);
+            api::responseCode($code);
         }
         else{
         
             echo $getResult;
-            echo $getResult;return api::responseCode($code);
+            api::responseCode($code);
         }
     }
     public function post(){
@@ -40,12 +40,12 @@ class productApi extends api{
         if($sku == NULL || $sku === "" || $name == NULL || $name === "" || $price == NULL || $price === "" || $myswitch == NULL || $myswitch === ""){
 
             $code = 400;
-            return api::responseCode($code); 
+            api::responseCode($code); 
 
         }  
         else {
                
-            return api::responseCode($code);
+            api::responseCode($code);
 
             if ($myswitch==="dvd"){
                 
@@ -76,12 +76,13 @@ class productApi extends api{
         if($itemsToDelete === "" || $itemsToDelete == NULL){
 
             $code = 400;
-            return api::responseCode($code);
+            api::responseCode($code);
             
         }  
         else {
         product::delete($itemsToDelete);
-        return api::responseCode($code);
+        $responseCode = api::responseCode($code);
+        return $responseCode;
         }
     }
 }

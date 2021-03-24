@@ -71,7 +71,7 @@ abstract class product{
                 ];
             };
                 $jsonList = json_encode($jsonList);
-                //return $jsonList;
+                return $jsonList;
     
                  // Closing the connection with BD
                  $conn->closeConnection();
