@@ -24,6 +24,22 @@ abstract class api {
             break;
 
         }
+        return $method;
+    }
+    public static function responseCode($code = 200){
+                  
+                    $status = array(
+                        200 => '200 OK',
+                        400 => '400 Bad Request',
+                        500 => '500 Internal Server Error'
+                        );
+                    // ok, validation error, or failure
+                    header('status: '.$status[$code]);
+                    // return the encoded json
+                    return json_encode(array(
+                        'status' => $code < 300, // success or not?
+                        
+                    ));
     }
     abstract function  get();
     abstract function  post();

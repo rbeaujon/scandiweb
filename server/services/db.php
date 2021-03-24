@@ -2,7 +2,7 @@
 
 require (__DIR__."/../config/configDB.php");
 
-class ConnectionDB{
+class connectionDB{
     // Attributes
     private $host;
     private $user;
@@ -19,7 +19,7 @@ class ConnectionDB{
       
     }
       
-    public function CreateConnection(){
+    public function createConnection(){
         // Method to create and return the connetion to DB
         $this->conn = new mysqli($this->host, $this->user, $this->password, $this->database);
         if($this->conn->connect_errno) {
@@ -27,12 +27,12 @@ class ConnectionDB{
         }
     }
       
-    public function CloseConnection(){
+    public function closeConnection(){
         //Metodo que cierra la conexion a la BD
         $this->conn->close();
     }
     
-    public function ExecuteQuery($sql){
+    public function executeQuery($sql){
         /* Metodo que ejecuta un query sql
          Retorna un resultado si es un SELECT*/
          $result = $this->conn->query($sql);

@@ -3,49 +3,87 @@
  * Products controller to handle all comunication from user data
  */ 
 require (__DIR__."/../services/productService.php");
-require (__DIR__."/baseApi.php");
+require ("baseApi.php");
 
 
 class productApi extends api{
 
-  public $jsonList;
+    public $jsonList;
 
-  public function get(){
+    public function get(){
+     
+        $code = 200;
 
-     $getResult = product::getAll(); // Call a public  static method getAll to obtein all product in DB
-     echo $getResult;
-  }
-  public function post(){
+        $getResult = product::getAll(); // Call a public  static method getAll to obtein all product in DB//
+        
+        if($getResult == NULL || $getResult === ""){
 
-      $sku = $_POST['sku'];
-      $name = $_POST['name'];
-      $price = $_POST['price'];
-      $myswitch = $_POST['myswitch'];
+            $code = 500;
+            return api::responseCode($code);
+        }
+        else{
+        
+            echo $getResult;
+            echo $getResult;return api::responseCode($code);
+        }
+    }
+    public function post(){
 
-      if ($myswitch==="dvd"){
-          
-          $product = new dvd();
-          $product->create($sku, $name, $price);
-      }
+       
+        $sku = isset($_POST['sku']);
+        $name = isset($_POST['name']);
+        $price = isset($_POST['price']);
+        $myswitch = isset($_POST['myswitch']);
 
-      if ($myswitch==="book"){
-          
-          $product = new book();
-          $product->create($sku, $name, $price);
-      }
+        $code = 200;
 
-      if ($myswitch==="furniture"){
-          
-          $product = new furniture();
-          $product->create($sku, $name, $price);
-      }
+        if($sku == NULL || $sku === "" || $name == NULL || $name === "" || $price == NULL || $price === "" || $myswitch == NULL || $myswitch === ""){
 
-  }
-  public function delete(){
+            $code = 400;
+            return api::responseCode($code); 
 
-      $itemsToDelete = file_get_contents('php://input');
-      product::delete($itemsToDelete);
-  }
+        }  
+        else {
+               
+            return api::responseCode($code);
+
+            if ($myswitch==="dvd"){
+                
+                $product = new dvd();
+                $product->create($sku, $name, $price);
+            }
+
+            if ($myswitch==="book"){
+                
+                $product = new book();
+                $product->create($sku, $name, $price);
+            }
+
+            if ($myswitch==="furniture"){
+                
+                $product = new furniture();
+                $product->create($sku, $name, $price);
+            }
+
+        }
+    }
+    public function delete(){
+            
+        
+        $itemsToDelete = file_get_contents('php://input');
+        $code = 200;
+
+        if($itemsToDelete === "" || $itemsToDelete == NULL){
+
+            $code = 400;
+            return api::responseCode($code);
+            
+        }  
+        else {
+        product::delete($itemsToDelete);
+        return api::responseCode($code);
+        }
+    }
 }
 
 $productApi = new productApi();

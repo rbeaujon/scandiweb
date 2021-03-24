@@ -47,17 +47,11 @@ function showProduct(){
                 var pspec = document.createElement("p");
                 pspec.innerHTML="<strong>"+ val.spec + "</strong>";
                  ul.appendChild(pspec);
-    
-               
-                
-
-
-
                
               });
-                
+                  
         },
-        error: function(error) {
+        error: function error() {
           //Do Something to handle error
           alert("error receiving the data from Server ");
         },
@@ -217,20 +211,33 @@ function massdelete(){
       }
     });
        list = list.substring(0,list.length - 1);
-    
-      $.ajax({
-        url: 'server/api/product.php',
-        type: 'delete',
-        success: (data) => {
-          $('#results').html(data);
-            /* it select every item from the var list and call the function deleteID */ 
-            delObject = list.split(',');
-            Object.keys(delObject).forEach(function (id){
-              /* delete every item from DOM coming from var list */ 
-              document.getElementById(delObject[id]).remove();
-            });
-          },
-        data: list,
-        dataType: 'text',
-      })
+
+       if(list ===''){
+         console.log('There is not Items selected');
+       }
+       else{ 
+
+          $.ajax({
+            url: 'server/api/product.php',
+            type: 'delete',
+            success: (data) => {
+              $('#results').html(data);
+                /* it select every item from the var list and call the function deleteID */ 
+                delObject = list.split(',');
+                Object.keys(delObject).forEach(function (id){
+                  /* delete every item from DOM coming from var list */ 
+                  document.getElementById(delObject[id]).remove();
+                });
+              },
+              error: function (xhr, status, error) {
+                
+                $("#btn_add").html('Add');
+                var errorMessage = xhr.status + ': ' + xhr.statusText + ': ' + status + ': ' + error;
+
+                alert('Error - ' + errorMessage);
+            },
+            data: list,
+            dataType: 'text',
+          })
+        }    
 }
