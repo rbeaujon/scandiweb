@@ -1,6 +1,6 @@
 <?PHP 
 
-require("db.php");
+require (__DIR__."/db.php");
 
 abstract class product{
 
@@ -10,12 +10,13 @@ abstract class product{
     public $name;
     public $price;
     public $spec;
+    public $items;
     public $jsonList;
  
     public function __construct() { } 
 
     abstract function create($sku, $name, $price);
-    public  static function delete($items){
+    public static function delete($items){
         
             // new inst from db
             $conn = new connectionDB();
@@ -23,7 +24,7 @@ abstract class product{
             // my new conexion to db
             $conn->createConnection();
         
-           //delete items in massive mode from products the list from script massdelete.js
+           //delete items in massive mode from products the list from functions massdelete
             
             $sql_del= "DELETE FROM products WHERE id in ($items)";
             

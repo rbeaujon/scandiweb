@@ -3,8 +3,7 @@
  * Products controller to handle all comunication from user data
  */ 
 require (__DIR__."/../services/productService.php");
-require ("baseApi.php");
-
+require (__DIR__."/baseApi.php");
 
 class productApi extends api{
 
@@ -13,7 +12,6 @@ class productApi extends api{
     public function get(){
      
         $code = 200;
-
         $getResult = product::getAll(); // Call a public  static method getAll to obtein all product in DB//
         
         if($getResult == NULL || $getResult === ""){
@@ -22,22 +20,25 @@ class productApi extends api{
             api::responseCode($code);
         }
         else{
-        
-            echo $getResult;
+            
             api::responseCode($code);
+            echo $getResult;
+            
         }
     }
     public function post(){
 
        
-        $sku = isset($_POST['sku']);
-        $name = isset($_POST['name']);
-        $price = isset($_POST['price']);
-        $myswitch = isset($_POST['myswitch']);
+        // $sku = isset($_POST['sku']);
+        // $name = isset($_POST['name']);
+        // $price = isset($_POST['price']);
+        // $myswitch = isset($_POST['myswitch']);
+
+
 
         $code = 200;
 
-        if($sku == NULL || $sku === "" || $name == NULL || $name === "" || $price == NULL || $price === "" || $myswitch == NULL || $myswitch === ""){
+        if($sku == NULL || $sku==="" || $name == NULL || $name === "" || $price == NULL || $price === "" || $myswitch == NULL || $myswitch === ""){
 
             $code = 400;
             api::responseCode($code); 
@@ -46,6 +47,13 @@ class productApi extends api{
         else {
                
             api::responseCode($code);
+
+
+            $sku = $_POST['sku'];
+            $name = $_POST['name'];
+            $price = $_POST['price'];
+            $myswitch = $_POST['myswitch'];
+
 
             if ($myswitch==="dvd"){
                 
@@ -69,8 +77,8 @@ class productApi extends api{
     }
     public function delete(){
             
-        
         $itemsToDelete = file_get_contents('php://input');
+      
         $code = 200;
 
         if($itemsToDelete === "" || $itemsToDelete == NULL){
@@ -80,14 +88,15 @@ class productApi extends api{
             
         }  
         else {
-        product::delete($itemsToDelete);
-        $responseCode = api::responseCode($code);
-        return $responseCode;
-        }
+            product::delete($itemsToDelete);   
+            api::responseCode($code);
+        };
+       
     }
 }
 
 $productApi = new productApi();
 $productApi->handleRequest();
+
 
 ?>

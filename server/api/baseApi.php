@@ -19,7 +19,7 @@ abstract class api {
                 $this->post();
             break;  
                     
-            case "DELETE":
+            case "PUT":
                 $this->delete();
             break;
 
@@ -34,15 +34,12 @@ abstract class api {
             500 => '500 Internal Server Error'
         );
         // ok, validation error, or failure
-        header('status: '.$status[$code]);
-
+        header('Status: '.$status[$code]);
         return $status[$code];
     }
     abstract function  get();
     abstract function  post();
     abstract function  delete();
-
-
 
 }
 

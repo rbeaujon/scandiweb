@@ -167,7 +167,7 @@ function prepareData(){
       document.getElementById("sku").value = "";
       document.getElementById("name").value = "";
       document.getElementById("price").value = "";
-      document.getElementById("switch").value="";
+      document.getElementById("switch").value= "";
      
      
 
@@ -211,15 +211,16 @@ function massdelete(){
       }
     });
        list = list.substring(0,list.length - 1);
+       
 
-       if(list ===''){
+       if(list === ""){
          console.log('There is not Items selected');
        }
        else{ 
-
+        
           $.ajax({
             url: 'server/api/product.php',
-            type: 'delete',
+            method: 'PUT',
             success: (data) => {
               $('#results').html(data);
                 /* it select every item from the var list and call the function deleteID */ 
@@ -229,15 +230,8 @@ function massdelete(){
                   document.getElementById(delObject[id]).remove();
                 });
               },
-              error: function (xhr, status, error) {
-                
-                $("#btn_add").html('Add');
-                var errorMessage = xhr.status + ': ' + xhr.statusText + ': ' + status + ': ' + error;
-
-                alert('Error - ' + errorMessage);
-            },
             data: list,
-            dataType: 'text',
+            dataType: 'text'
           })
         }    
 }
