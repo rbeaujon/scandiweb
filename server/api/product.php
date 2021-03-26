@@ -29,16 +29,16 @@ class productApi extends api{
     public function post(){
 
        
-        // $sku = isset($_POST['sku']);
-        // $name = isset($_POST['name']);
-        // $price = isset($_POST['price']);
-        // $myswitch = isset($_POST['myswitch']);
+        $sku = isset($_POST['sku']);
+        $name = isset($_POST['name']);
+        $price = isset($_POST['price']);
+        $myswitch = isset($_POST['myswitch']);
 
 
 
         $code = 200;
 
-        if($sku == NULL || $sku==="" || $name == NULL || $name === "" || $price == NULL || $price === "" || $myswitch == NULL || $myswitch === ""){
+        if($sku == NULL  || $name == NULL  || $price == NULL || $myswitch == NULL){
 
             $code = 400;
             api::responseCode($code); 

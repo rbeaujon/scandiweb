@@ -19,7 +19,7 @@ abstract class api {
                 $this->post();
             break;  
                     
-            case "PUT":
+            case "DELETE":
                 $this->delete();
             break;
 

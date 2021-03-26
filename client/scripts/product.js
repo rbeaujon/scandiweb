@@ -220,7 +220,7 @@ function massdelete(){
         
           $.ajax({
             url: 'server/api/product.php',
-            method: 'PUT',
+            method: 'DELETE',
             success: (data) => {
               $('#results').html(data);
                 /* it select every item from the var list and call the function deleteID */ 
