@@ -103,64 +103,64 @@ function prepareData(){
   isValidSwitch(myswitch);
   
 
+    if(errorSKU === "" || errorName === "" || errorPrice === "" || errorSwitch === "" ){
 
- if(errorSKU === "" || errorName === "" || errorPrice === "" || errorSwitch === "" ){
+        error = 1;
+    }
 
-      error = 1;
-  }
- 
-  if (myswitch === "dvd"){
+  switch(myswitch){
+
+      case "dvd": 
+          
+          //Evaluation of the correct data in the DVD's MB
+          dvdMB = document.getElementById('dvdMB').value;
+          isValidDVD(dvdMB);
+
+          if(errorDVD === "" && dvdMB != ""){
+
+              $formData =  {sku, name, price, myswitch, dvdMB};
+              document.getElementById("dvdMB").value = "";
+              error = 0;
+          }
+      break; 
       
-      dvdMB = document.getElementById('dvdMB').value;
-      isValidDVD(dvdMB);
-      
-  }
+      case "book": 
+          
+          bookW = document.getElementById('bookW').value;
+          isValidBook(bookW);
 
-  if (myswitch === "dvd"  &&  errorDVD === "" && dvdMB != "" )  { 
+          if (errorDVD === "" && dvdMB != "" )  { 
 
-      $formData =  {sku, name, price, myswitch, dvdMB};
-      document.getElementById("dvdMB").value = "";
-      error = 0;
-  }
+              $formData =  {sku, name, price, myswitch,bookW};
+              document.getElementById("bookW").value = "";
+              error = 0;
+          }
+      break;  
+              
+      case "furniture": 
+    
+          height = document.getElementById('height').value;
+          width = document.getElementById('width').value;
+          lenght = document.getElementById('lenght').value;
+          isValidFurniture(height);
+          isValidFurniture(width);
+          isValidFurniture(lenght);
 
-  if (myswitch === "book"){
 
-      bookW = document.getElementById('bookW').value;
-      isValidBook(bookW);
-     
-  }  
+          if (myswitch === "furniture"  &&  errorFurniture === "" && height != "" && width != "" && lenght != ""){
 
-  if (myswitch === "book"  &&  errorBook === "" && bookW != ""){
-
-      $formData =  {sku, name, price, myswitch,bookW};
-      document.getElementById("bookW").value = "";
-      error = 0;
-  } 
-
-  if (myswitch === "furniture"){
-
-      height = document.getElementById('height').value;
-      width = document.getElementById('width').value;
-      lenght = document.getElementById('lenght').value;
-      isValidFurniture(height);
-      isValidFurniture(width);
-      isValidFurniture(lenght);
-
-  }  
-
-  if (myswitch === "furniture"  &&  errorFurniture === "" && height != "" && width != "" && lenght != ""){
-
-      $formData =  { sku, name, price, myswitch, height, width, lenght};
-       
-      document.getElementById("height").value = "";
-      document.getElementById("width").value = "";
-      document.getElementById("lenght").value = "";
-      
-      error = 0;
-
-  }          
-      
-  if(error == 0){
+              $formData =  { sku, name, price, myswitch, height, width, lenght};
+              
+              document.getElementById("height").value = "";
+              document.getElementById("width").value = "";
+              document.getElementById("lenght").value = "";
+              
+              error = 0;
+          }
+      break;
+    }
+  
+    if (error==0){
 
       save($formData);
 
@@ -168,12 +168,7 @@ function prepareData(){
       document.getElementById("name").value = "";
       document.getElementById("price").value = "";
       document.getElementById("switch").value= "";
-     
-     
-
-  }
-
-
+    }
 }
 //Save the new product in DB after to pass for client validations    
 function save(x) {  
