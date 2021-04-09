@@ -6,6 +6,7 @@ abstract class product{
 
     // Attributes
     public $id;
+    public $myswitch;
     public $sku;
     public $name;
     public $price;
@@ -15,7 +16,7 @@ abstract class product{
  
     public function __construct() { } 
 
-    abstract function create($sku, $name, $price);
+    abstract function create($myswitch, $sku, $name, $price);
     public static function delete($items){
         
             // new inst from db
@@ -80,10 +81,11 @@ abstract class product{
 
     }
 }
-class dvd extends product {
+
+class products extends product {
 
 
-    public function create($sku, $name, $price){
+    public function create($myswitch, $sku, $name, $price){
      // Method to create one dvd in the DB
 
             // my new instance of DB
@@ -93,68 +95,44 @@ class dvd extends product {
             $conn->createConnection();
 
             // registering in db according to the type of the item
-        
-            $dvdMB = $_POST['dvdMB'];
-            $sql_insert = "INSERT INTO products  (sku, name, price, type, dvdSize, bookKg, height, width, length) VALUES ('$sku', '$name', $price, 'dvd', $dvdMB, NULL, NULL, NULL, NULL)";
-            $conn->executeQuery($sql_insert);
-        
 
+
+            switch($myswitch){
+
+                case "dvd": 
+                    
+                    //saving a new dvd in DB
+                    $dvdMB = $_POST['dvdMB'];
+                    $sql_insert = "INSERT INTO products  (sku, name, price, type, dvdSize, bookKg, height, width, length) VALUES ('$sku', '$name', $price, 'dvd', $dvdMB, NULL, NULL, NULL, NULL)";
+                    $conn->executeQuery($sql_insert);
+                    
+                break; 
+                
+                case "book": 
+                    
+                    //saving a new book in DB
+                    $bookW = $_POST['bookW'];
+                    $sql_insert = "INSERT INTO products  (sku, name, price, type, dvdSize, bookKg, height, width, length) VALUES ('$sku', '$name', $price, 'book', NULL, $bookW, NULL, NULL, NULL)";
+                    $conn->executeQuery($sql_insert);
+               
+                break;  
+                        
+                case "furniture":
+                    
+                    //saving a new furniture in DB
+                    $height = $_POST['height'];
+                    $width = $_POST['width'];
+                    $lenght = $_POST['lenght'];
+                    $sql_insert = "INSERT INTO products  (sku, name, price, type, dvdSize, bookKg, height, width, length) VALUES ('$sku', '$name', $price, 'furniture', NULL, NULL, $height, $width, $lenght)";
+                    $conn->executeQuery($sql_insert);
+
+                break;
+    
+            }
             // Closing the connection with BD
             $conn->closeConnection();
-
-    }
-    
-
-}
-class book extends product {
-
-    public function create($sku, $name, $price){
-
-        // Method to create one Product in DB
-
-            // my new instance of DB
-            $conn = new connectionDB();
             
-            // Create a new connection with DB
-            $conn->createConnection();
+    }   
 
-            // saving a new book in DB
-       
-            $bookW = $_POST['bookW'];
-            $sql_insert = "INSERT INTO products  (sku, name, price, type, dvdSize, bookKg, height, width, length) VALUES ('$sku', '$name', $price, 'book', NULL, $bookW, NULL, NULL, NULL)";
-            $conn->executeQuery($sql_insert);
-       
-
-        // Closing the connection with BD
-        $conn->closeConnection();
-
-    }
-}
-class furniture extends product {
-
-    public function create($sku, $name, $price){
-
-        // Method to create one Product in DB
-
-            // my new instance of DB
-            $conn = new connectionDB();
-            
-            // Create a new connection with DB
-            $conn->createConnection();
-
-            // registering in db according to the type of the item
- 
-            $height = $_POST['height'];
-            $width = $_POST['width'];
-            $lenght = $_POST['lenght'];
-            $sql_insert = "INSERT INTO products  (sku, name, price, type, dvdSize, bookKg, height, width, length) VALUES ('$sku', '$name', $price, 'furniture', NULL, NULL, $height, $width, $lenght)";
-            $conn->executeQuery($sql_insert);
-       
-        // Closing the connection with BD
-        $conn->closeConnection();
-
-    }
-  
-}
-
+}    
 ?>

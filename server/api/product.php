@@ -53,25 +53,9 @@ class productApi extends api{
             $name = $_POST['name'];
             $price = $_POST['price'];
             $myswitch = $_POST['myswitch'];
-
-
-            if ($myswitch==="dvd"){
-                
-                $product = new dvd();
-                $product->create($sku, $name, $price);
-            }
-
-            if ($myswitch==="book"){
-                
-                $product = new book();
-                $product->create($sku, $name, $price);
-            }
-
-            if ($myswitch==="furniture"){
-                
-                $product = new furniture();
-                $product->create($sku, $name, $price);
-            }
+                            
+            $products = new products();
+            $products->create($myswitch, $sku, $name, $price);
 
         }
     }
