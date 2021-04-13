@@ -12,7 +12,7 @@ class productApi extends api{
     public function get(){
      
         $code = 200;
-        $getResult = product::getAll(); // Call a public  static method getAll to obtein all product in DB//
+        $getResult = productService::getAll(); // Call a public  static method getAll to obtain all product in DB//
         
         if($getResult == NULL || $getResult === ""){
 
