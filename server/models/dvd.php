@@ -1,16 +1,29 @@
 <?PHP 
 
-class dvd {
+require_once (__DIR__."/productModel.php");
 
-    public function __construct() { } 
+class Dvd extends ProductModel {
 
-    public static function showModel ($data){
+    public function __construct($data) { 
+        parent::__construct($data);
+    }
 
-        $spec = "Size: " . $data['dvdSize'] . " MB";
-        return $spec;
+    public function getData (){
 
+        $spec = "Size: " . $this->data['dvdSize'] . " MB";
 
+       
+        $jsonList = [    
+            'id' => $this->data['id'],
+            'sku' => $this->data['sku'],
+            'name'=> $this->data['name'],
+            'price'=> $this->data['price'],
+            'spec'=> $spec
+        ];
+   
+        return $jsonList;
 
     }
+
 }
 ?>

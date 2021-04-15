@@ -1,15 +1,26 @@
 <?PHP 
 
-class book {
+require_once (__DIR__."/productModel.php");
 
-    public $spec;
+class Book extends ProductModel {
 
-    public function __construct() { } 
+    public function __construct($data) { 
+        parent::__construct($data);
+    }
 
-    public static function showModel ($data){
+    public function getData (){
 
-        $spec = "Weight: " . $data['bookKg'] . " KG";
-        return $spec;
+        $spec = "Weight: " . $this->data['bookKg'] . " KG";
+       
+        $jsonList = [    
+            'id' => $this->data['id'],
+            'sku' => $this->data['sku'],
+            'name'=> $this->data['name'],
+            'price'=> $this->data['price'],
+            'spec'=> $spec
+        ];
+
+        return $jsonList;
     }
 }
 ?>

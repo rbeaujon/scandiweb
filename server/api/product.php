@@ -12,18 +12,31 @@ class productApi extends api{
     public function get(){
      
         $code = 200;
-        $getResult = productService::getAll(); // Call a public  static method getAll to obtain all product in DB//
-        
-        if($getResult == NULL || $getResult === ""){
+        $products = ProductService::getAll(); // Call a public  static method getAll to obtein all product in DB//
+
+        if($products == NULL || $products === ""){
 
             $code = 500;
             api::responseCode($code);
         }
         else{
+
+            $productsData = array(); 
+            
+            
+            foreach ($products as $product){
+
+    
+                $data = $product->getData(); 
+                array_push ($productsData, $data);
+            } 
             
             api::responseCode($code);
-            echo $getResult;
+
+            echo json_encode($productsData);;
             
+
+
         }
     }
     public function post(){
