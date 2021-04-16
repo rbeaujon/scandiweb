@@ -85,7 +85,7 @@ class productApi extends api{
             
         }  
         else {
-            product::delete($itemsToDelete);   
+            ProductService::delete($itemsToDelete);   
             api::responseCode($code);
         };
        

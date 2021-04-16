@@ -1,6 +1,6 @@
 <?PHP
 
- class ProductModel  {    
+ abstract class ProductModel  {    
 
     // Attributes
      public $data;
@@ -9,11 +9,10 @@
         public function __construct($data) { 
             
            $this->data = $data;
-            
 
         } 
     
-        public function getData (){}
+       abstract public function getData();
 
 }  
 ?>

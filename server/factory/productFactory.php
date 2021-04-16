@@ -13,6 +13,7 @@ class ProductFactory  {
 
             $product = new Dvd($data);
             return $product;
+        
         }
         else if ($data['type'] === "book") {
 
